@@ -21,28 +21,28 @@ steps:
         image_name: example-voting-app/result
         working_directory: ./result/
         dockerfile: Dockerfile
-        tag: 'dannycodes-${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+        tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
       BuildVoteImage:
         title: Building Vote Image
         type: build
         image_name: example-voting-app/vote
         working_directory: ./vote/
         dockerfile: Dockerfile
-        tag: 'dannycodes-${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+        tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
       BuildWorkerImage:
         title: Building Worker Image
         type: build
         image_name: example-voting-app/worker
         working_directory: ./worker/
         dockerfile: Dockerfile
-        tag: 'dannycodes-${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+        tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
       BuildTestImage:
         title: Building Test Image
         type: build
         image_name: example-voting-app/tests
         working_directory: ./tests/
         dockerfile: Dockerfile
-        tag: 'dannycodes-${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+        tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
     fail_fast: true
   DeployPRRelease:
     stage: "pull request"
@@ -51,7 +51,7 @@ steps:
     working_directory: ./
     environment:
       - CHART_REF=example-voting-app
-      - RELEASE_NAME='dannycodes-${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_PULL_REQUEST_NUMBER}}-${{CF_REPO_NAME}}'
+      - RELEASE_NAME='${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_PULL_REQUEST_NUMBER}}-${{CF_REPO_NAME}}'
       - KUBE_CONTEXT=${{KUBE_CONTEXT}}
       - NAMESPACE=${{KUBE_NAMESPACE}}
       - DEBUG_CHART=true
