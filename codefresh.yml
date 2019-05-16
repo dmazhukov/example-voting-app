@@ -25,12 +25,12 @@ steps:
 
 # Create 'codefresh-demo' Kubernetes Namespace
 
-  CreateCodefreshDemoNamespace:
-    image:  codefresh/cfstep-helm
-    stage: "Prepare Kubernetes Cluster"
-    commands:
-      - kubectl config use-context '${{KUBERNETES_CLUSTER_NAME}}'
-      - kubectl create namespace ${{KUBERNETES_NAMESPACE}}
+#  CreateCodefreshDemoNamespace:
+#    image:  codefresh/cfstep-helm
+#    stage: "Prepare Kubernetes Cluster"
+#    commands:
+#      - kubectl config use-context '${{KUBERNETES_CLUSTER_NAME}}'
+#      - kubectl create namespace ${{KUBERNETES_NAMESPACE}}
 
 # Create Image Pull Secret
 
